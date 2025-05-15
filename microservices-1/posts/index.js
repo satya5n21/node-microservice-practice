@@ -14,6 +14,13 @@ app.post('/posts', (req, res) => {
   const id = randomBytes(4).toString('hex');
   const { title } = req.body;
 
+  if (!title) {
+    return res.status(400).json({
+      status: 0,
+      message: "Please provide a valid title!!"
+    })
+  }
+
   posts[id] = {
     id, title
   };
