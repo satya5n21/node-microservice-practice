@@ -1,8 +1,10 @@
 const express = require('express');
 const { randomBytes } = require('crypto');
+const cors = require('cors');
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 const commentsByPostId = {};
 
@@ -23,5 +25,5 @@ app.post('/posts/:id/comments', (req, res) => {
 });
 
 app.listen(4001, () => {
-  console.log(`Comments service running on PORT:4001`);
+  console.log(`Comments service running on PORT: 4001`);
 })
